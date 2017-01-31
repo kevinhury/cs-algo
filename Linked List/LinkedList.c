@@ -1,0 +1,73 @@
+#include "LinkedList.h"
+
+void print_list(node *head)
+{
+    node *current = head;
+    
+    while (current != NULL)
+    {
+        printf("%d", current->value);
+        current = current->next;
+    }
+}
+
+void push(node *head, data_t value)
+{
+    node *current = head;
+    
+    while (current != NULL)
+    {
+        current = current->next;
+    }
+    
+    current->next = malloc(sizeof(node));
+    current->next->value = value;
+    current->next->next = NULL;
+}
+
+data_t pop(node *head)
+{
+    node *current;
+    data_t retval;
+    if (head->next == NULL)
+    {
+        retval = head->value;
+        free(head);
+        return retval;
+    }
+    
+    current = head;
+    while (current->next->next != NULL)
+    {
+        current = current->next;
+    }
+    
+    retval = current->next->value;
+    free(current->next);
+    current->next = NULL;
+    return retval;
+}
+
+data_t remove_first(node **head)
+{
+    node *next;
+    data_t retval = 0;
+    if (*head == NULL) return retval;
+    
+    next = (*head)->next;
+    retval = (*head)->value;
+    free(*head);
+    *head = next;
+    
+    return retval;
+}
+
+int remove_by_value(node **head, data_t value)
+{
+    return 0;
+}
+
+data_t remove_by_index(node **head, int index)
+{
+    return 0;
+}
