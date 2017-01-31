@@ -1,6 +1,6 @@
 #include "BinarySearchTree.h"
 
-void insertBST(BTreeNode** bst, int x)
+void insert(BTreeNode** bst, data_type x)
 {
     BTreeNode* t = *bst, *parent = NULL;
     while (t != NULL)

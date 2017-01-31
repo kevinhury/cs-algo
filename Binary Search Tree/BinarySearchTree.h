@@ -2,7 +2,10 @@
 #ifndef BinarySearchTree
 #define BinarySearchTree
 
-typedef data_type int;
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef int data_type;
 
 typedef struct BTreeNode
 {
@@ -12,7 +15,7 @@ typedef struct BTreeNode
 } BTreeNode;
 
 
-void insertBST(BTreeNode **bst, int x);
+void insert(BTreeNode **bst, data_type x);
 
 void printPreorder(BTreeNode *bst);
 
