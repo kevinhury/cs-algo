@@ -64,10 +64,45 @@ data_t remove_first(node **head)
 
 int remove_by_value(node **head, data_t value)
 {
-    return 0;
+    int retval = 0;
+    node *current = *head;
+    node *temp = NULL;
+    
+    if (current->value == value) return remove_first(head);
+    
+    while (current->next->value != value)
+    {
+        if (current->next == NULL) return -1;
+        current = current->next;
+        retval++;
+    }
+    
+    temp = current->next;
+    current->next = temp->next;
+    free(temp);
+    
+    return retval;
 }
 
 data_t remove_by_index(node **head, int index)
 {
-    return 0;
+    int i = 0;
+    data_t retval = 0;
+    node *current = *head;
+    node *temp = NULL;
+    
+    if (index == 0) return pop(current);
+    
+    for (i = 0; i < index - 1; i++)
+    {
+        if (current->next == NULL) return retval;
+        current = current->next;
+    }
+    
+    temp = current->next;
+    retval = temp->value;
+    current->next = temp->next;
+    free(temp);
+    
+    return retval;
 }
