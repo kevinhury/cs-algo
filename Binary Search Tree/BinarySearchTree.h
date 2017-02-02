@@ -1,4 +1,3 @@
-
 #ifndef BinarySearchTree
 #define BinarySearchTree
 
@@ -7,24 +6,24 @@
 
 typedef int data_type;
 
-typedef struct BTreeNode
+typedef struct bst_node
 {
     data_type data;
-    struct BTreeNode *left;
-    struct BTreeNode *right;
-} BTreeNode;
+    struct bst_node *left;
+    struct bst_node *right;
+} bst_node;
 
 
-void insert(BTreeNode **bst, data_type x);
+void insert(bst_node **bst, data_type x);
 
-void printPreorder(BTreeNode *bst);
+void print_preorder(bst_node *bst);
 
-void printInorder(BTreeNode *bst);
+void print_inorder(bst_node *bst);
 
-void printPostorder(BTreeNode *bst);
+void print_postorder(bst_node *bst);
 
-void printByLevel(BTreeNode *bst);
+void print_by_level(bst_node *bst);
 
-void clearBTree(BTreeNode **bst);
+void clear_tree(bst_node **bst);
 
 #endif

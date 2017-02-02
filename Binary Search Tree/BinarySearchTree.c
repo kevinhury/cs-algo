@@ -1,8 +1,8 @@
 #include "BinarySearchTree.h"
 
-void insert(BTreeNode** bst, data_type x)
+void insert(bst_node** bst, data_type x)
 {
-    BTreeNode* t = *bst, *parent = NULL;
+    bst_node* t = *bst, *parent = NULL;
     while (t != NULL)
     {
         parent = t;
@@ -12,7 +12,7 @@ void insert(BTreeNode** bst, data_type x)
             t = t->right;
     }
     
-    BTreeNode *p = malloc(sizeof(BTreeNode));
+    bst_node *p = malloc(sizeof(bst_node));
     p->data = x;
     p->left = p->right = NULL;
     if (parent == NULL)
@@ -23,45 +23,45 @@ void insert(BTreeNode** bst, data_type x)
         parent->right = p;
 }
 
-void printPreorder(BTreeNode *bst)
+void print_preorder(bst_node *bst)
 {
     if (bst == NULL) return;
 
     printf("%d", bst->data);
-    printPreorder(bst->left);
-    printPreorder(bst->right);
+    print_preorder(bst->left);
+    print_preorder(bst->right);
 }
 
-void printInorder(BTreeNode *bst)
+void print_inorder(bst_node *bst)
 {
     if (bst == NULL) return;
 
-    printInorder(bst->left);
+    print_inorder(bst->left);
     printf("%d", bst->data);
-    printInorder(bst->right);
+    print_inorder(bst->right);
 }
 
-void printPostorder(BTreeNode *bst)
+void print_postorder(bst_node *bst)
 {
     if (bst == NULL) return;
 
-    printPostorder(bst->left);
-    printPostorder(bst->right);
+    print_postorder(bst->left);
+    print_postorder(bst->right);
     printf("%d", bst->data);
 }
 
-void printByLevel(BTreeNode *bst)
+void print_by_level(bst_node *bst)
 {
     // Unimplemented
     exit(1);
 }
 
-void clearBTree(BTreeNode **bst)
+void clear_tree(bst_node **bst)
 {
     if (*bst == NULL) return;
 
-    clearBTree(&((*bst)->left));
-    clearBTree(&((*bst)->right));
+    clear_tree(&((*bst)->left));
+    clear_tree(&((*bst)->right));
     free(*bst);
     *bst = NULL;
 }
