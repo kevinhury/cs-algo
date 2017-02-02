@@ -11,7 +11,7 @@ void print_list(node *head)
     }
 }
 
-void push(node *head, data_t value)
+void insert(node *head, data_t value)
 {
     node *current = head;
     
@@ -25,7 +25,7 @@ void push(node *head, data_t value)
     current->next->next = NULL;
 }
 
-data_t pop(node *head)
+data_t extract(node *head)
 {
     node *current;
     data_t retval;
@@ -91,7 +91,7 @@ data_t remove_by_index(node **head, int index)
     node *current = *head;
     node *temp = NULL;
     
-    if (index == 0) return pop(current);
+    if (index == 0) return extract(current);
     
     for (i = 0; i < index - 1; i++)
     {
@@ -105,4 +105,10 @@ data_t remove_by_index(node **head, int index)
     free(temp);
     
     return retval;
+}
+
+void freelist(node *head)
+{
+    if (head->next) freelist(head->next);
+    free(head);
 }

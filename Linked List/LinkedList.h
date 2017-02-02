@@ -13,10 +13,11 @@ typedef struct node {
 
 
 void print_list(node *head);
-void push(node *head, data_t value);
-data_t pop(node *head);
+void insert(node *head, data_t value);
+data_t extract(node *head);
 data_t remove_first(node **head);
 data_t remove_by_index(node **head, int index);
 int remove_by_value(node **head, data_t value);
+void freelist(node *head);
 
 #endif
