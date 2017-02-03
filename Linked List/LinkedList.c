@@ -1,21 +1,30 @@
 #include "LinkedList.h"
 
+node *createnode(data_t value)
+{
+    node *head = malloc(sizeof(node));
+    head->next = NULL;
+    head->value = value;
+    
+    return head;
+}
+
 void print_list(node *head)
 {
     node *current = head;
     
     while (current != NULL)
     {
-        printf("%d", current->value);
+        printf("%d ", current->value);
         current = current->next;
     }
 }
 
-void insert(node *head, data_t value)
+void append(node *head, data_t value)
 {
     node *current = head;
     
-    while (current != NULL)
+    while (current->next != NULL)
     {
         current = current->next;
     }
@@ -23,6 +32,13 @@ void insert(node *head, data_t value)
     current->next = malloc(sizeof(node));
     current->next->value = value;
     current->next->next = NULL;
+}
+
+void prepend(node **head, data_t value)
+{
+    node *n = createnode(value);
+    n->next = *head;
+    *head = n;
 }
 
 data_t extract(node *head)
@@ -91,7 +107,7 @@ data_t remove_by_index(node **head, int index)
     node *current = *head;
     node *temp = NULL;
     
-    if (index == 0) return extract(current);
+    if (index == 0) return remove_first(head);
     
     for (i = 0; i < index - 1; i++)
     {

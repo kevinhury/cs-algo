@@ -12,8 +12,10 @@ typedef struct node {
 } node;
 
 
+node *createnode(data_t value);
 void print_list(node *head);
-void insert(node *head, data_t value);
+void append(node *head, data_t value);
+void prepend(node **head, data_t value);
 data_t extract(node *head);
 data_t remove_first(node **head);
 data_t remove_by_index(node **head, int index);
