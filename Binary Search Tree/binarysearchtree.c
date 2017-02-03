@@ -1,4 +1,4 @@
-#include "BinarySearchTree.h"
+#include "binarysearchtree.h"
 
 bst_node *createnode(data_t value)
 {
