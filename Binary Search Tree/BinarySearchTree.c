@@ -1,33 +1,55 @@
 #include "BinarySearchTree.h"
 
-void insert(bst_node** bst, data_type x)
+bst_node *createnode(data_t value)
 {
-    bst_node* t = *bst, *parent = NULL;
-    while (t != NULL)
-    {
-        parent = t;
-        if (x < t->data)
-            t = t->left;
-        else
-            t = t->right;
-    }
+    bst_node *node = malloc(sizeof(bst_node));
+    node->value = value;
+    node->left = NULL;
+    node->right = NULL;
     
-    bst_node *p = malloc(sizeof(bst_node));
-    p->data = x;
-    p->left = p->right = NULL;
-    if (parent == NULL)
-        *bst = p;
-    else if (x < parent->data)
-        parent->left = p;
-    else if (x > parent->data)
-        parent->right = p;
+    return node;
+}
+
+void insert(bst_node **bst, data_t value)
+{
+    bst_node *node = *bst;
+    if (node == NULL) {
+        *bst = createnode(value);
+    } else {
+        if (value < node->value) {
+            if (node->left != NULL) insert(&node->left, value);
+            else node->left = createnode(value);
+        } else if (value > node->value) {
+            if (node->right != NULL) insert(&node->right, value);
+            else node->right = createnode(value);
+        }
+    }
+}
+
+void extract(bst_node **bst, data_t value)
+{
+    // Unimplemented
+    exit(1);
+}
+
+bst_node *search(bst_node *bst, data_t value)
+{
+    if (bst == NULL) return NULL;
+    
+    if (value > bst->value) {
+        return search(bst->right, value);
+    } else if (value < bst->value) {
+        return search(bst->left, value);
+    } else {
+        return bst;
+    }
 }
 
 void print_preorder(bst_node *bst)
 {
     if (bst == NULL) return;
 
-    printf("%d", bst->data);
+    printf("%d ", bst->value);
     print_preorder(bst->left);
     print_preorder(bst->right);
 }
@@ -37,7 +59,7 @@ void print_inorder(bst_node *bst)
     if (bst == NULL) return;
 
     print_inorder(bst->left);
-    printf("%d", bst->data);
+    printf("%d ", bst->value);
     print_inorder(bst->right);
 }
 
@@ -47,7 +69,7 @@ void print_postorder(bst_node *bst)
 
     print_postorder(bst->left);
     print_postorder(bst->right);
-    printf("%d", bst->data);
+    printf("%d ", bst->value);
 }
 
 void print_by_level(bst_node *bst)
@@ -56,12 +78,12 @@ void print_by_level(bst_node *bst)
     exit(1);
 }
 
-void clear_tree(bst_node **bst)
+void freetree(bst_node **bst)
 {
     if (*bst == NULL) return;
 
-    clear_tree(&((*bst)->left));
-    clear_tree(&((*bst)->right));
+    freetree(&((*bst)->left));
+    freetree(&((*bst)->right));
     free(*bst);
     *bst = NULL;
 }
