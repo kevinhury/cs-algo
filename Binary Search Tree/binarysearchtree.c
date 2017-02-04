@@ -26,10 +26,18 @@ void insert(bst_node **bst, data_t value)
     }
 }
 
-void extract(bst_node **bst, data_t value)
+void removenode(bst_node **bst, data_t value)
 {
-    // Unimplemented
-    exit(1);
+    bst_node *node = *bst;
+    bst_node *min;
+    if (value > node->value) {
+        removenode(&node->right, value);
+    } else if (value < node->value) {
+        removenode(&node->left, value);
+    } else {
+        min = minnode(node);
+        
+    }
 }
 
 bst_node *search(bst_node *bst, data_t value)
@@ -40,6 +48,24 @@ bst_node *search(bst_node *bst, data_t value)
         return search(bst->right, value);
     } else if (value < bst->value) {
         return search(bst->left, value);
+    } else {
+        return bst;
+    }
+}
+
+bst_node *minnode(bst_node *bst)
+{
+    if (bst->left != NULL) {
+        return minnode(bst->left);
+    } else {
+        return bst;
+    }
+}
+
+bst_node *maxnode(bst_node *bst)
+{
+    if (bst->right != NULL) {
+        return maxnode(bst->right);
     } else {
         return bst;
     }
