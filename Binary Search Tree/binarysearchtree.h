@@ -26,13 +26,13 @@ bst_node *minnode(bst_node *bst);
 
 bst_node *maxnode(bst_node *bst);
 
+int height(bst_node *bst);
+
 void print_preorder(bst_node *bst);
 
 void print_inorder(bst_node *bst);
 
 void print_postorder(bst_node *bst);
-
-void print_by_level(bst_node *bst);
 
 void freetree(bst_node **bst);
 

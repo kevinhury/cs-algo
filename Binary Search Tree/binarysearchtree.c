@@ -71,6 +71,17 @@ bst_node *maxnode(bst_node *bst)
     }
 }
 
+int height(bst_node *bst)
+{
+    int left, right;
+    if (bst == NULL) return -1;
+    
+    left = height(bst->left);
+    right = height(bst->right);
+    
+    return 1 + (left > right ? left : right);
+}
+
 void print_preorder(bst_node *bst)
 {
     if (bst == NULL) return;
@@ -96,12 +107,6 @@ void print_postorder(bst_node *bst)
     print_postorder(bst->left);
     print_postorder(bst->right);
     printf("%d ", bst->value);
-}
-
-void print_by_level(bst_node *bst)
-{
-    // Unimplemented
-    exit(1);
 }
 
 void freetree(bst_node **bst)
