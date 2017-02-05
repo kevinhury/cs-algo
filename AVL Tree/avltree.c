@@ -50,8 +50,10 @@ bst_node *rotate_rightleft(bst_node *node)
     return z;
 }
 
-int balance(bst_node *bst)
+int getbalance(bst_node *bst)
 {
+    if (!bst) return 0;
+    
     int balance = 0;
     if (bst->left)
         balance += height(bst->left);
@@ -63,10 +65,37 @@ int balance(bst_node *bst)
 
 void avlbalance(bst_node **bst)
 {
+    bst_node *newroot, *node = *bst;
+    int balance;
     
+    if (node->left) {
+        avlbalance(&(node->left));
+    }
+    if (node->right) {
+        avlbalance(&(node->right));
+    }
+    
+    balance = getbalance(node);
+    
+    if (balance >= 2) {
+        if (getbalance(node->left) <= -1)
+            newroot = rotate_leftright(node);
+        else
+            newroot = rotate_leftleft(node);
+            
+    } else if (balance <= -2) {
+        if (getbalance(node->right) >= -1)
+            newroot = rotate_rightleft(node);
+        else
+            newroot = rotate_rightright(node);
+    } else {
+        newroot = node;
+    }
+    
+    *bst = newroot;
 }
 
-void balancedinsert(bst_node **bst, data_t value)
+void avlinsert(bst_node **bst, data_t value)
 {
     insert(bst, value);
     avlbalance(bst);
