@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef int data_t;
+typedef void* data_t;
 
 typedef struct node {
     data_t value;
@@ -13,7 +13,7 @@ typedef struct node {
 
 
 node *createnode(data_t value);
-void print_list(node *head);
+void iterate(node *head, void (*iterator)(const void *value));
 void append(node *head, data_t value);
 void prepend(node **head, data_t value);
 data_t extract(node *head);

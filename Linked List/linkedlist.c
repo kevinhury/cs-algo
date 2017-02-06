@@ -9,13 +9,12 @@ node *createnode(data_t value)
     return head;
 }
 
-void print_list(node *head)
+void iterate(node *head, void (*iterator)(const void *value))
 {
     node *current = head;
-    
     while (current != NULL)
     {
-        printf("%d ", current->value);
+        iterator(current->value);
         current = current->next;
     }
 }
@@ -84,7 +83,10 @@ int remove_by_value(node **head, data_t value)
     node *current = *head;
     node *temp = NULL;
     
-    if (current->value == value) return remove_first(head);
+    if (current->value == value) {
+        remove_first(head);
+        return retval;
+    }
     
     while (current->next->value != value)
     {
