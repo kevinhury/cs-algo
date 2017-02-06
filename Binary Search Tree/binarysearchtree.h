@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef int data_t;
+typedef void* data_t;
 
 typedef struct bst_node
 {
@@ -28,11 +28,11 @@ bst_node *maxnode(bst_node *bst);
 
 int height(bst_node *bst);
 
-void print_preorder(bst_node *bst);
+void iterate_preorder(bst_node *bst, void (*iterator)(const void *value));
 
-void print_inorder(bst_node *bst);
+void iterate_inorder(bst_node *bst, void (*iterator)(const void *value));
 
-void print_postorder(bst_node *bst);
+void iterate_postorder(bst_node *bst, void (*iterator)(const void *value));
 
 void freetree(bst_node **bst);
 

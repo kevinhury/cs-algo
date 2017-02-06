@@ -82,31 +82,31 @@ int height(bst_node *bst)
     return 1 + (left > right ? left : right);
 }
 
-void print_preorder(bst_node *bst)
+void iterate_preorder(bst_node *bst, void (*iterator)(const void *value))
 {
     if (bst == NULL) return;
 
-    printf("%d ", bst->value);
-    print_preorder(bst->left);
-    print_preorder(bst->right);
+    iterator(bst->value);
+    iterate_preorder(bst->left, iterator);
+    iterate_preorder(bst->right, iterator);
 }
 
-void print_inorder(bst_node *bst)
+void iterate_inorder(bst_node *bst, void (*iterator)(const void *value))
 {
     if (bst == NULL) return;
 
-    print_inorder(bst->left);
-    printf("%d ", bst->value);
-    print_inorder(bst->right);
+    iterate_inorder(bst->left, iterator);
+    iterator(bst->value);
+    iterate_inorder(bst->right, iterator);
 }
 
-void print_postorder(bst_node *bst)
+void iterate_postorder(bst_node *bst, void (*iterator)(const void *value))
 {
     if (bst == NULL) return;
 
-    print_postorder(bst->left);
-    print_postorder(bst->right);
-    printf("%d ", bst->value);
+    iterate_postorder(bst->left, iterator);
+    iterate_postorder(bst->right, iterator);
+    iterator(bst->value);
 }
 
 void freetree(bst_node **bst)
