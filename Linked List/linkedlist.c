@@ -125,8 +125,10 @@ data_t remove_by_index(node **head, int index)
     return retval;
 }
 
-void freelist(node *head)
+void freelist(node **head)
 {
-    if (head->next) freelist(head->next);
-    free(head);
+    if (*head == NULL) return;
+    freelist(&((*head)->next));
+    free(*head);
+    *head = NULL;
 }

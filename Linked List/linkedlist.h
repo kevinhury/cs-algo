@@ -20,6 +20,6 @@ data_t extract(node *head);
 data_t remove_first(node **head);
 data_t remove_by_index(node **head, int index);
 int remove_by_value(node **head, data_t value);
-void freelist(node *head);
+void freelist(node **head);
 
 #endif
