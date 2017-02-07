@@ -1,5 +1,12 @@
 #include "stack.h"
 
+stack *createstack()
+{
+    stack *s = malloc(sizeof(stack));
+    s->top = 0;
+    return s;
+}
+
 int push(stack *stack, data_t value)
 {
     if (is_full(stack)) {
@@ -16,7 +23,7 @@ data_t pop(stack *stack)
 {
     data_t data;
     if (is_empty(stack)) {
-        return -1;
+        return NULL;
     }
     
     data = stack->_stack[stack->top];
