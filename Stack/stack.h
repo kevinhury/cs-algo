@@ -18,6 +18,7 @@ data_t pop(stack *stack);
 data_t peek(stack *stack);
 int is_empty(stack *stack);
 int is_full(stack *stack);
+void iterate_stack(stack *stack, void (*iterator)(const void *value));
 void freestack(stack **s);
 
 #endif

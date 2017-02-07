@@ -42,6 +42,9 @@ data_t pop(stack *stack)
 
 data_t peek(stack *stack)
 {
+    if (is_empty(stack)) {
+        return NULL;
+    }
     return stack->content[stack->top];
 }
 
@@ -54,6 +57,14 @@ int is_empty(stack *stack)
 int is_full(stack *stack)
 {
     return stack->top == stack->maxsize - 1;
+}
+
+void iterate_stack(stack *stack, void (*iterator)(const void *value))
+{
+    int i = 0;
+    for (i = 0; i <= stack->top; i++) {
+        iterator(stack->content[i]);
+    }
 }
 
 void freestack(stack **s)
