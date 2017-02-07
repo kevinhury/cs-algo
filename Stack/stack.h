@@ -3,16 +3,16 @@
 
 #include <stdlib.h>
 
-#define MAX_SIZE 10
 typedef void* data_t;
 
 typedef struct stack
 {
     int top;
-    data_t _stack[MAX_SIZE];
+    int maxsize;
+    data_t *content;
 } stack;
 
-stack *createstack();
+int createstack(stack *s, int maxsize);
 int push(stack *stack, data_t value);
 data_t pop(stack *stack);
 data_t peek(stack *stack);

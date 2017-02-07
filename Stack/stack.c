@@ -1,10 +1,18 @@
 #include "stack.h"
+#include "stdio.h"
 
-stack *createstack()
+int createstack(stack *s, int maxsize)
 {
-    stack *s = malloc(sizeof(stack));
-    s->top = 0;
-    return s;
+    data_t *content = malloc(sizeof(maxsize) * sizeof(data_t));
+    if (content == NULL) {
+        fprintf(stderr, "Insufficient memory to initialize stack.\n");
+        return 0;
+    }
+    s->content = content;
+    s->top = -1;
+    s->maxsize = maxsize;
+    
+    return 1;
 }
 
 int push(stack *stack, data_t value)
@@ -14,7 +22,7 @@ int push(stack *stack, data_t value)
     }
     
     stack->top++;
-    stack->_stack[stack->top] = value;
+    stack->content[stack->top] = value;
     
     return 1;
 }
@@ -26,7 +34,7 @@ data_t pop(stack *stack)
         return NULL;
     }
     
-    data = stack->_stack[stack->top];
+    data = stack->content[stack->top];
     stack->top--;
     
     return data;
@@ -34,7 +42,7 @@ data_t pop(stack *stack)
 
 data_t peek(stack *stack)
 {
-    return stack->_stack[stack->top];
+    return stack->content[stack->top];
 }
 
 
@@ -45,7 +53,7 @@ int is_empty(stack *stack)
 
 int is_full(stack *stack)
 {
-    return stack->top == MAX_SIZE;
+    return stack->top == stack->maxsize - 1;
 }
 
 void freestack(stack **s)
