@@ -47,3 +47,9 @@ int is_full(stack *stack)
 {
     return stack->top == MAX_SIZE;
 }
+
+void freestack(stack **s)
+{
+    free(*s);
+    *s = NULL;
+}
