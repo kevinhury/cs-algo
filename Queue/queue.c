@@ -22,7 +22,7 @@ data_t front(queue *q)
     if (is_empty(q)) {
         return NULL;
     }
-    return q->content[q->front];
+    return q->content[q->front + 1];
 }
 
 data_t rear(queue *q)
@@ -43,12 +43,7 @@ int is_full(queue *q)
     return q->count == q->maxsize;
 }
 
-int contains(queue *q)
-{
-    return 0;
-}
-
-int size(queue *q)
+int count(queue *q)
 {
     return q->count;
 }
