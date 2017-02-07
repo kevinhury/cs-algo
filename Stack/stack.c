@@ -3,7 +3,7 @@
 
 int createstack(stack *s, int maxsize)
 {
-    data_t *content = malloc(sizeof(maxsize) * sizeof(data_t));
+    data_t *content = malloc(sizeof(data_t) * maxsize);
     if (content == NULL) {
         fprintf(stderr, "Insufficient memory to initialize stack.\n");
         return 0;
