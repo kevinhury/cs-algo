@@ -28,9 +28,7 @@ void append(node *head, data_t value)
         current = current->next;
     }
     
-    current->next = malloc(sizeof(node));
-    current->next->value = value;
-    current->next->next = NULL;
+    current->next = createnode(value);
 }
 
 void prepend(node **head, data_t value)

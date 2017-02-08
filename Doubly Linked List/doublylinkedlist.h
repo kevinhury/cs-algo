@@ -5,7 +5,7 @@
 
 typedef void* data_t;
 
-typedef struct {
+typedef struct node {
     data_t value;
     struct node *prev;
     struct node *next;
