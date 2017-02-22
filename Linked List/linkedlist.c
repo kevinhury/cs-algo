@@ -75,9 +75,9 @@ data_t remove_first(node **head)
     return retval;
 }
 
-int remove_by_value(node **head, data_t value)
+size_t remove_by_value(node **head, data_t value)
 {
-    int retval = 0;
+    size_t retval = 0;
     node *current = *head;
     node *temp = NULL;
     
@@ -100,9 +100,9 @@ int remove_by_value(node **head, data_t value)
     return retval;
 }
 
-data_t remove_by_index(node **head, int index)
+data_t remove_by_index(node **head, size_t index)
 {
-    int i = 0;
+    size_t i = 0;
     data_t retval = 0;
     node *current = *head;
     node *temp = NULL;

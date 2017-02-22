@@ -79,7 +79,7 @@ data_t remove_first(node **head);
  *
  * @return The data of the removed node.
  */
-data_t remove_by_index(node **head, int index);
+data_t remove_by_index(node **head, size_t index);
 
 /**
  * Removes a node by a given value in the the given linked list.
@@ -91,7 +91,7 @@ data_t remove_by_index(node **head, int index);
  *
  * @return The index of the removed node.
  */
-int remove_by_value(node **head, data_t value);
+size_t remove_by_value(node **head, data_t value);
 
 /**
  * Frees the given linked list and modify the list's pointer to NULL.
