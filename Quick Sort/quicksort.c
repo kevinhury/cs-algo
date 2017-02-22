@@ -8,9 +8,9 @@ void swap(int *i, int *j)
     *j = temp;
 }
 
-int partition(data_t *arr, int low, int high)
+size_t partition(data_t *arr, size_t low, size_t high)
 {
-    int pivot, i, j;
+    size_t pivot, i, j;
     pivot = arr[high];
     i = low - 1;
     
@@ -27,11 +27,11 @@ int partition(data_t *arr, int low, int high)
     return i + 1;
 }
 
-void quicksort(data_t *arr, int low, int high)
+void quicksort(data_t *arr, size_t low, size_t high)
 {
     if (low >= high) return;
     
-    int part = partition(arr, low, high);
+    size_t part = partition(arr, low, high);
     
     quicksort(arr, low, part - 1);
     quicksort(arr, part + 1, high);

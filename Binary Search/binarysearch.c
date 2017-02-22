@@ -1,11 +1,11 @@
 #include "binarysearch.h"
 
-int binarysearch(data_t *arr, int size, data_t value)
+size_t binarysearch(data_t *arr, size_t size, data_t value)
 {
-    int low = 0;
-    int high = size - 1;
-    int middle = -1;
-    int index = -1;
+    size_t low = 0;
+    size_t high = size - 1;
+    size_t middle = -1;
+    size_t index = -1;
     
     while(low <= high) {
         middle = low + (high - low) / 2;

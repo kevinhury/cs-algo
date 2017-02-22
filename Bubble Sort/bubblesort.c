@@ -1,8 +1,8 @@
 #include "bubblesort.h"
 
-void bubblesort(data_t *arr, int size)
+void bubblesort(data_t *arr, size_t size)
 {
-    int i, j;
+    size_t i, j;
     data_t temp;
     for (i = 0; i < size - 1; i++)
     {

@@ -17,6 +17,6 @@ typedef int data_t;
  *    quicksort(array_pointer, 0, array_size - 1);
  * @endcode
  */
-void quicksort(data_t *arr, int low, int high);
+void quicksort(data_t *arr, size_t low, size_t high);
 
 #endif /* quicksort_h */

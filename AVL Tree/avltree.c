@@ -50,11 +50,11 @@ bst_node *rotate_rightleft(bst_node *node)
     return z;
 }
 
-int getbalance(bst_node *bst)
+size_t getbalance(bst_node *bst)
 {
     if (!bst) return 0;
     
-    int balance = 0;
+    size_t balance = 0;
     if (bst->left)
         balance += height(bst->left);
     if (bst->right)

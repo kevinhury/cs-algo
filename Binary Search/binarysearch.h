@@ -19,6 +19,6 @@ typedef int data_t;
  *    binarysearch(array_pointer, 10, 2);
  * @endcode
  */
-int binarysearch(data_t *arr, int size, data_t value);
+size_t binarysearch(data_t *arr, size_t size, data_t value);
 
 #endif /* binarysearch_h */

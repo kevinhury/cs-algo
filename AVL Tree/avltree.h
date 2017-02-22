@@ -12,7 +12,7 @@
  *
  * @return The difference between the branches diameters.
  */
-int getbalance(bst_node *bst);
+size_t getbalance(bst_node *bst);
 
 /**
  * Balances the tree so that the two child subtrees of any node differ by at most one.

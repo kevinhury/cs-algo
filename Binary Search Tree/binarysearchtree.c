@@ -71,9 +71,9 @@ bst_node *maxnode(bst_node *bst)
     }
 }
 
-int height(bst_node *bst)
+size_t height(bst_node *bst)
 {
-    int left, right;
+    size_t left, right;
     if (bst == NULL) return -1;
     
     left = height(bst->left);

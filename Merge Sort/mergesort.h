@@ -15,6 +15,6 @@
  *    merge_sort(array_pointer, 0, array_size - 1);
  * @endcode
  */
-void merge_sort(int *arr, int low, int high);
+void merge_sort(int *arr, size_t low, size_t high);
 
 #endif /* mergesort_h */

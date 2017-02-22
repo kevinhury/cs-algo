@@ -78,7 +78,7 @@ bst_node *maxnode(bst_node *bst);
  *
  * @return The height of the tree.
  */
-int height(bst_node *bst);
+size_t height(bst_node *bst);
 
 /**
  * Iterates the tree in "preorder" order and calls a callback function with each iteration.

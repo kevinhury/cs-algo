@@ -1,10 +1,10 @@
 #include "mergesort.h"
 
-void merge(int *arr, int low, int middle, int high)
+void merge(int *arr, size_t low, size_t middle, size_t high)
 {
-    int i, j, k;
-    int lowsize = middle - low + 1;
-    int highsize =  high - middle;
+    size_t i, j, k;
+    size_t lowsize = middle - low + 1;
+    size_t highsize =  high - middle;
 
     int lowarr[lowsize], higharr[highsize];
     
@@ -47,9 +47,9 @@ void merge(int *arr, int low, int middle, int high)
     }
 }
 
-void merge_sort(int *arr, int low, int high)
+void merge_sort(int *arr, size_t low, size_t high)
 {
-    int middle;
+    size_t middle;
     if (low >= high) {
         return;
     }

@@ -16,6 +16,6 @@ typedef int data_t;
  *    bubblesort(array_pointer, array_size);
  * @endcode
  */
-void bubblesort(data_t *arr, int size);
+void bubblesort(data_t *arr, size_t size);
 
 #endif /* bubblesort_h */
