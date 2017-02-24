@@ -43,7 +43,33 @@ int arraylist_add(arraylist *list, void *element)
     return 1;
 }
 
-int arraylist_remove(arraylist *list, void *element)
+int arraylist_remove(arraylist *list, size_t index)
 {
+    size_t i;
+    if (index >= list->size) {
+        return 0;
+    }
+    
+    for (i = index; i <list->size - 1; i++)
+    {
+        list->data[i] = list->data[i + 1];
+    }
+    
+    list->size -= 1;
+    
     return 1;
+}
+
+void *arraylist_get(arraylist *list, size_t index)
+{
+    if (index >= list->size) {
+        return NULL;
+    }
+    
+    return list->data[index];
+}
+
+int arraylist_shrink(arraylist *list)
+{
+    return 0;
 }
