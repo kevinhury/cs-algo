@@ -46,9 +46,7 @@ int arraylist_add(arraylist *list, void *element)
 int arraylist_remove(arraylist *list, size_t index)
 {
     size_t i;
-    if (index >= list->size) {
-        return 0;
-    }
+    if (index >= list->size) return 0;
     
     for (i = index; i <list->size - 1; i++)
     {
@@ -62,14 +60,25 @@ int arraylist_remove(arraylist *list, size_t index)
 
 void *arraylist_get(arraylist *list, size_t index)
 {
-    if (index >= list->size) {
-        return NULL;
-    }
+    if (index >= list->size) return NULL;
     
     return list->data[index];
 }
 
+int arraylist_set(arraylist *list, size_t index, void *value)
+{
+    if (index >= list->size) return 0;
+    
+    list->data[index] = value;
+    return 1;
+}
+
 int arraylist_shrink(arraylist *list)
 {
-    return 0;
+    if (list == NULL || list->data == NULL) return 0;
+    
+    list->capacity = list->size;
+    list->data = realloc(list->data, sizeof(void *) * list->capacity);
+    
+    return 1;
 }
