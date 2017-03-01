@@ -12,13 +12,13 @@ typedef struct stack
     data_t *content;
 } stack;
 
-int createstack(stack *s, int maxsize);
-int push(stack *stack, data_t value);
-data_t pop(stack *stack);
-data_t peek(stack *stack);
-int is_empty(stack *stack);
-int is_full(stack *stack);
-void iterate_stack(stack *stack, void (*iterator)(const void *value));
-void freestack(stack **s);
+int stack_init(stack *s, int maxsize);
+int stack_push(stack *stack, data_t value);
+data_t stack_pop(stack *stack);
+data_t stack_peek(stack *stack);
+int stack_is_empty(stack *stack);
+int stack_is_full(stack *stack);
+void stack_iterate(stack *stack, void (*iterator)(const void *value));
+void stack_free(stack **s);
 
 #endif

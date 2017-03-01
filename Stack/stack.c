@@ -1,7 +1,7 @@
 #include "stack.h"
 #include "stdio.h"
 
-int createstack(stack *s, int maxsize)
+int stack_init(stack *s, int maxsize)
 {
     data_t *content = malloc(sizeof(data_t) * maxsize);
     if (content == NULL) {
@@ -15,9 +15,9 @@ int createstack(stack *s, int maxsize)
     return 1;
 }
 
-int push(stack *stack, data_t value)
+int stack_push(stack *stack, data_t value)
 {
-    if (is_full(stack)) {
+    if (stack_is_full(stack)) {
         return 0;
     }
     
@@ -27,10 +27,10 @@ int push(stack *stack, data_t value)
     return 1;
 }
 
-data_t pop(stack *stack)
+data_t stack_pop(stack *stack)
 {
     data_t data;
-    if (is_empty(stack)) {
+    if (stack_is_empty(stack)) {
         return NULL;
     }
     
@@ -40,26 +40,26 @@ data_t pop(stack *stack)
     return data;
 }
 
-data_t peek(stack *stack)
+data_t stack_peek(stack *stack)
 {
-    if (is_empty(stack)) {
+    if (stack_is_empty(stack)) {
         return NULL;
     }
     return stack->content[stack->top];
 }
 
 
-int is_empty(stack *stack)
+int stack_is_empty(stack *stack)
 {
     return stack->top == -1;
 }
 
-int is_full(stack *stack)
+int stack_is_full(stack *stack)
 {
     return stack->top == stack->maxsize - 1;
 }
 
-void iterate_stack(stack *stack, void (*iterator)(const void *value))
+void stack_iterate(stack *stack, void (*iterator)(const void *value))
 {
     int i = 0;
     for (i = 0; i <= stack->top; i++) {
@@ -67,7 +67,7 @@ void iterate_stack(stack *stack, void (*iterator)(const void *value))
     }
 }
 
-void freestack(stack **s)
+void stack_free(stack **s)
 {
     free(*s);
     *s = NULL;
