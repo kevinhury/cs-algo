@@ -13,13 +13,13 @@ typedef struct queue
 } queue;
 
 
-int createqueue(queue *q, int maxssize);
-data_t front(queue *q);
-data_t rear(queue *q);
-int is_empty(queue *q);
-int is_full(queue *q);
-int count(queue *q);
-int enqueue(queue *q, data_t value);
-data_t dequeue(queue *q);
+int queue_init(queue *q, int maxssize);
+data_t queue_front(queue *q);
+data_t queue_rear(queue *q);
+int queue_is_empty(queue *q);
+int queue_is_full(queue *q);
+int queue_count(queue *q);
+int queue_enqueue(queue *q, data_t value);
+data_t queue_dequeue(queue *q);
 
 #endif /* queue_h */

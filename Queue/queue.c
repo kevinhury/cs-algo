@@ -1,7 +1,7 @@
 #include "queue.h"
 #include <stdlib.h>
 
-int createqueue(queue *q, int maxssize)
+int queue_init(queue *q, int maxssize)
 {
     data_t *content = malloc(sizeof(data_t) * maxssize);
     if (content == NULL) {
@@ -17,40 +17,40 @@ int createqueue(queue *q, int maxssize)
     return 1;
 }
 
-data_t front(queue *q)
+data_t queue_front(queue *q)
 {
-    if (is_empty(q)) {
+    if (queue_is_empty(q)) {
         return NULL;
     }
     return q->content[q->front + 1];
 }
 
-data_t rear(queue *q)
+data_t queue_rear(queue *q)
 {
-    if (is_empty(q)) {
+    if (queue_is_empty(q)) {
         return NULL;
     }
     return q->content[q->rear];
 }
 
-int is_empty(queue *q)
+int queue_is_empty(queue *q)
 {
     return q->count == 0;
 }
 
-int is_full(queue *q)
+int queue_is_full(queue *q)
 {
     return q->count == q->maxsize;
 }
 
-int count(queue *q)
+int queue_count(queue *q)
 {
     return q->count;
 }
 
-int enqueue(queue *q, data_t value)
+int queue_enqueue(queue *q, data_t value)
 {
-    if (is_full(q)) {
+    if (queue_is_full(q)) {
         return 0;
     }
     
@@ -61,10 +61,10 @@ int enqueue(queue *q, data_t value)
     return 1;
 }
 
-data_t dequeue(queue *q)
+data_t queue_dequeue(queue *q)
 {
     data_t data;
-    if (is_empty(q)) {
+    if (queue_is_empty(q)) {
         return NULL;
     }
     
