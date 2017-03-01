@@ -1,7 +1,7 @@
 #include "stack.h"
 #include "stdio.h"
 
-int stack_init(stack *s, int maxsize)
+int stack_create(stack *s, int maxsize)
 {
     data_t *content = malloc(sizeof(data_t) * maxsize);
     if (content == NULL) {
@@ -67,8 +67,9 @@ void stack_iterate(stack *stack, void (*iterator)(const void *value))
     }
 }
 
-void stack_free(stack **s)
+void stack_destroy(stack **s)
 {
+    free((*s)->content);
     free(*s);
     *s = NULL;
 }

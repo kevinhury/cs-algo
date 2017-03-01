@@ -74,3 +74,10 @@ data_t queue_dequeue(queue *q)
     
     return data;
 }
+
+void queue_destroy(queue **q)
+{
+    free((*q)->content);
+    free(*q);
+    *q = NULL;
+}
