@@ -1,39 +1,36 @@
 #include "quicksort.h"
 
-
-void swap(int *i, int *j)
+void swap(int *a, int *b)
 {
-    int temp = *i;
-    *i = *j;
-    *j = temp;
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
-size_t partition(data_t *arr, size_t low, size_t high)
+int partition(data_t *arr, int low, int high)
 {
-    size_t pivot, i, j;
-    pivot = arr[high];
-    i = low - 1;
-    
-    for (j = low; j <= high - 1; j++)
+    int pivot = arr[(low + high) / 2];
+    while (low <= high)
     {
-        if (arr[j] <= pivot)
-        {
-            i++;
-            swap(&arr[i], &arr[j]);
+        while (arr[low] < pivot)
+            low++;
+        while (arr[high] > pivot)
+            high--;
+        if (low <= high) {
+            swap(&arr[low], &arr[high]);
+            low++;
+            high--;
         }
     }
-    swap(&arr[i + 1], &arr[high]);
-    
-    return i + 1;
+    return low;
 }
 
-void quicksort(data_t *arr, size_t low, size_t high)
+void quicksort(data_t *arr, int low, int high)
 {
     if (low >= high) return;
     
-    size_t part = partition(arr, low, high);
-    
-    quicksort(arr, low, part - 1);
-    quicksort(arr, part + 1, high);
+    int index = partition(arr, low, high);
+    quicksort(arr, low, index - 1);
+    quicksort(arr, index + 1, high);
 }
 
